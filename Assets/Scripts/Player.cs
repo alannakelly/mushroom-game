@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : Fighter
 {
@@ -16,7 +17,9 @@ public class Player : Fighter
     }
     private Animator _anim;
     private SpriteRenderer _sprite;
-    public GameObject attackObj;
+    public Bullet bullet;
+    public int mana, maxMana;
+    private Vector2 _move;
 
     void Start()
     {
@@ -24,31 +27,31 @@ public class Player : Fighter
         _sprite = GetComponent<SpriteRenderer>();
     }
 
+    public void OnMove(InputValue v)
+    {
+        _move = v.Get<Vector2>();
+    }
+
+    public void OnAttack()
+    {
+        _anim.Play("ShroomAttack", 0, 0);
+        StartCoroutine(Attack());
+    }
+
+    public void OnAbsorb()
+    {
+        //absorb mana if on plant, otherwise do nothing
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (_canMove)
         {
-            this.TakeDamage(1);
-        }
-        if (Input.GetAxis("Skill1") > 0)
-        {
-            if (!_attacking)
+            if (_move != Vector2.zero)
             {
-                _attacking = true;
-                _anim.Play("ShroomAttack", 0, 0);
-                StartCoroutine(Attack());
-            }
-        }
-        else if (_canMove)
-        {
-            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-            {
-                float x = Input.GetAxis("Horizontal") * this.moveSpeed * Time.deltaTime;
-                float y = Input.GetAxis("Vertical") * this.moveSpeed * Time.deltaTime;
                 _anim.SetFloat("Anim", 1);
-                transform.position += new Vector3(x, y, 0);
-                #region change facing direction
-                switch (x)
+                transform.position += (Vector3)_move * moveSpeed * Time.deltaTime;
+                switch (_move.x)
                 {
                     case < 0: //moving left
                         _sprite.flipX = true;
@@ -61,9 +64,7 @@ public class Player : Fighter
                     case 0: //no horizontal movement
                         break;
                 }
-                #endregion
             }
-            //play idle anim if player can move but isn't
             else
             {
                 _anim.SetFloat("Anim", 0);
@@ -73,7 +74,9 @@ public class Player : Fighter
 
     public IEnumerator Attack()
     {
-        //instantiate attackObj
+        Bullet shot = Instantiate(this.bullet, this.transform);
+        float xPos = _sprite.flipX ? -1 : 1;
+        shot.Init(this, xPos);
         yield return new WaitForSeconds(0.5f);
         _attacking = false;
     }

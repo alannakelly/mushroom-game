@@ -10,7 +10,9 @@ public class Fighter : MonoBehaviour
     [Tooltip("Maximum possible health.")] public int maxHealth;
     [Tooltip("Distance units moved per second.")] public float moveSpeed;
     [Tooltip("Damage dealt by attack.")] public int attackPower;
-    [SerializeField] [Tooltip("Duration of attack animation.")] private float _attackTime;
+    [SerializeField][Tooltip("Duration of attack animation.")] private float _attackTime;
+    public AudioClip hurtSound, attackSound, deathSound;
+    [NonSerialized] public AudioSource sound;
     [NonSerialized] public bool hurt, attacking;
     [NonSerialized] public Vector2 move;
     [NonSerialized] public SpriteRenderer sprite;
@@ -35,12 +37,15 @@ public class Fighter : MonoBehaviour
         
     }
 
-    public virtual void TakeDamage(int damage, float animTime)
+    public virtual void TakeDamage(int damage)
     {
         this.health -= damage;
         this.hurt = true;
+        this.sound.PlayOneShot(this.hurtSound);
         this.anim.Play(this.hurtAnim, 0, 0);
-        StartCoroutine(this.HurtAnim(animTime));
+        AnimatorClipInfo[] info = this.anim.GetCurrentAnimatorClipInfo(0);
+        float t = info[0].clip.length;
+        StartCoroutine(this.HurtAnim(t));
         if (this.health <= 0)
         {
             this.Die();
@@ -53,11 +58,13 @@ public class Fighter : MonoBehaviour
         this.hurt = false;
     }
 
-    public virtual void Attack(float animTime)
+    public virtual void Attack()
     {
         this.attacking = true;
         this.anim.Play(this.attackAnim, 0, 0);
-        this.AttackAnim(animTime);
+        AnimatorClipInfo[] info = this.anim.GetCurrentAnimatorClipInfo(0);
+        float t = info[0].clip.length;
+        this.AttackAnim(t);
     }
 
     public IEnumerator AttackAnim(float t)
@@ -68,6 +75,7 @@ public class Fighter : MonoBehaviour
 
     public virtual void Die()
     {
-
+        this.sound.PlayOneShot(this.deathSound);
+        Destroy(this.gameObject, deathSound.length);
     }
 }

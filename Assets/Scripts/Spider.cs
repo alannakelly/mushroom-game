@@ -41,8 +41,8 @@ public class Spider : Fighter
         }
     }
 
-    public override void TakeDamage(int damage, float animTime = 0.5f)
+    public override void TakeDamage(int damage)
     {
-        base.TakeDamage(damage, animTime);
+        base.TakeDamage(damage);
     }
 }

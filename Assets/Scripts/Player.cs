@@ -10,6 +10,7 @@ public class Player : Fighter
     public Bullet bullet;
     public int mana, maxMana;
     public Camera cam;
+    public AudioClip walkSound;
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class Player : Fighter
 
     public void OnAttack()
     {
-        this.Attack(0.5f);
+        this.Attack();
     }
 
     public void OnAbsorb()
@@ -71,20 +72,20 @@ public class Player : Fighter
         }
     }
 
-    public override void Attack(float animTime)
+    public override void Attack()
     {
         //this.attacking = true;
         //this.anim.Play("ShroomAttack", 0, 0);
-        base.Attack(animTime);
+        base.Attack();
         Bullet shot = Instantiate(bullet, this.transform);
         Vector2 mousePos = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         shot.Init(this, this.sprite.flipX, mousePos);
         //StartCoroutine(this.AttackAnim(0.5f));
     }
 
-    public override void TakeDamage(int damage, float animTime = 0.5f)
+    public override void TakeDamage(int damage)
     {
-        base.TakeDamage(damage, animTime);
+        base.TakeDamage(damage);
     }
 
     public override void Die()

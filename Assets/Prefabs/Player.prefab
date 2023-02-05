@@ -53,10 +53,13 @@ MonoBehaviour:
   moveSpeed: 5
   attackPower: 0
   _attackTime: 0
+  hurtSound: {fileID: 8300000, guid: f6b789684e5976847b52c61fb7686dc7, type: 3}
+  attackSound: {fileID: 8300000, guid: 4dcc0d7a9afd26149affb45dc5944969, type: 3}
   bullet: {fileID: 4389043302187463826, guid: 9f310fc949828b547a5d9102a0fd8a39, type: 3}
   mana: 0
   maxMana: 0
   cam: {fileID: 0}
+  walkSound: {fileID: 8300000, guid: 9231cc08da54e4e40ac72fedcecf452b, type: 3}
 --- !u!212 &8748696720368743412
 SpriteRenderer:
   m_ObjectHideFlags: 0

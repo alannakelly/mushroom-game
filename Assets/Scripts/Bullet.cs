@@ -49,7 +49,7 @@ public class Bullet : MonoBehaviour
         if(collision.collider.gameObject.tag == "enemy")
         {
             Fighter e = collision.collider.gameObject.GetComponent<Fighter>();
-            //e.TakeDamage(_p.attackPower);
+            e.TakeDamage(_p.attackPower);
             StopCoroutine(End());
             Destroy(this.gameObject);
         }

@@ -104,6 +104,9 @@ MonoBehaviour:
   moveSpeed: 0
   attackPower: 0
   _attackTime: 0
+  hurtSound: {fileID: 8300000, guid: d4290f5619e2b2248a1c76e0f1a085a8, type: 3}
+  attackSound: {fileID: 8300000, guid: 59834e3785a8bb54d9baa495023b614e, type: 3}
+  deathSound: {fileID: 8300000, guid: aa39ac6b50452704888f0d6761c2904c, type: 3}
 --- !u!95 &5479699998019291478
 Animator:
   serializedVersion: 5

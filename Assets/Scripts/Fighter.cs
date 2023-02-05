@@ -64,7 +64,7 @@ public class Fighter : MonoBehaviour
         this.anim.Play(this.attackAnim, 0, 0);
         AnimatorClipInfo[] info = this.anim.GetCurrentAnimatorClipInfo(0);
         float t = info[0].clip.length;
-        this.AttackAnim(t);
+        StartCoroutine(this.AttackAnim(t));
     }
 
     public IEnumerator AttackAnim(float t)

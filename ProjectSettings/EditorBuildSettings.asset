@@ -5,8 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/MainMenu.unity
+    guid: 914be9e25d04b9d46b20e284136c6669
+  - enabled: 1
+    path: Assets/Scenes/MushroomGame.unity
+    guid: 3275b3a3dbd6a60448062a1d75d12633
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 329813024707cfb4fb47205c89c28240, type: 2}

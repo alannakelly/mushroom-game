@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -74,13 +72,10 @@ public class Player : Fighter
 
     public override void Attack()
     {
-        //this.attacking = true;
-        //this.anim.Play("ShroomAttack", 0, 0);
         base.Attack();
         Bullet shot = Instantiate(bullet, this.transform);
         Vector2 mousePos = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         shot.Init(this, this.sprite.flipX, mousePos);
-        //StartCoroutine(this.AttackAnim(0.5f));
     }
 
     public override void TakeDamage(int damage)

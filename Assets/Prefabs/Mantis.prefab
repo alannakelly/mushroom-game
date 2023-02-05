@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1424803523665503049}
   - component: {fileID: 6750236397023525912}
-  - component: {fileID: 8704812486741627624}
   - component: {fileID: 5479699998019291478}
+  - component: {fileID: 828531630363260069}
   - component: {fileID: 6040183721232360744}
   m_Layer: 0
   m_Name: Mantis
@@ -87,26 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8704812486741627624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3087415414958435793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 813415a6f0999a54cb9bcf01ef69b2c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 0
-  moveSpeed: 0
-  attackPower: 0
-  _attackTime: 0
-  hurtSound: {fileID: 8300000, guid: d4290f5619e2b2248a1c76e0f1a085a8, type: 3}
-  attackSound: {fileID: 8300000, guid: 59834e3785a8bb54d9baa495023b614e, type: 3}
-  deathSound: {fileID: 8300000, guid: aa39ac6b50452704888f0d6761c2904c, type: 3}
 --- !u!95 &5479699998019291478
 Animator:
   serializedVersion: 5
@@ -127,6 +107,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &828531630363260069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3087415414958435793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a30c514704a33524cbcf07d88587a600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  maxHealth: 5
+  moveSpeed: 3
+  attackPower: 0
+  _attackTime: 0
+  hurtSound: {fileID: 8300000, guid: d4290f5619e2b2248a1c76e0f1a085a8, type: 3}
+  attackSound: {fileID: 8300000, guid: 59834e3785a8bb54d9baa495023b614e, type: 3}
+  deathSound: {fileID: 8300000, guid: aa39ac6b50452704888f0d6761c2904c, type: 3}
 --- !u!61 &6040183721232360744
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -10,7 +10,9 @@ Join our adventurous mushroom as he embarks on a journey through the lush forest
 # Project Description
 
 **Event:**  Global Game Jam Belfast 2023
+
 **platform:**  MS Windows
+
 **Engine Used:**  Unity
 
 
